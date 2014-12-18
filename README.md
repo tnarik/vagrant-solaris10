@@ -8,10 +8,10 @@
 
 ## Installation
 
-Install via Rubygems or Gemfile
+Install via Vagrant
 
 ```zsh
-$ gem install hostsfile
+$ vagrant plugin install vagrant-solaris10
 ```
 
 ## Usage
@@ -20,7 +20,7 @@ This is a Vagrant plugin.
 
 ## Contributing
 
-1. Fork it ( https://github.com/tnarik/hostsfile/fork )
+1. Fork it ( https://github.com/tnarik/vagrant-solaris10/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
