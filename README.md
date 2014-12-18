@@ -28,4 +28,5 @@ This is a Vagrant plugin.
 
 ## Authors
 
-- Tnarik Innael (@tnarik)
+- Tnarik Innael (@tnarik) 
+- Mitchell Hashimoto (@mitchellh) : portions of code used as base for capability implementation, from the original [Vagrant](https://github.com/mitchellh/vagrant) plugins code (1.6.5->1.7.x). Specific attribution will appear per file/method.

@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.description   = "Guest plugin for Vagrant Solaris10"
   spec.summary       = "Guest plugin for Vagrant Solaris10"
   spec.homepage      = "https://github.com/tnarik/vagrant-solaris10"
-  spec.license       = ""
+  spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = spec.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
