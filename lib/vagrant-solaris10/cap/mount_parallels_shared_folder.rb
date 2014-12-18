@@ -6,7 +6,7 @@ module Vagrant
       class MountParallelsSharedFolder
 
         def self.mount_parallels_shared_folder(machine, name, guestpath, options)
-          p  "mount parallels"
+          machine.ui.warn("Parallels doesn't support shared folders for Solaris")
         end
         
       end
