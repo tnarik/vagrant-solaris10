@@ -3,60 +3,34 @@ require "vagrant"
 
 module Vagrant
   module Solaris10
-    class A
-      def self.mount_parallels_shared_folder(machine, name, guestpath, options)
-        p  "mount parallels"
-      end
-
-      def self.mount_vmware_shared_folder(machine, name, guestpath, options)
-        p  "mount vmware"
-      end
-
-      # Copyright (c) 2014 Mitchell Hashimoto
-      def self.insert_public_key(machine, contents)
-        contents = contents.chomp
-        contents = Vagrant::Util::ShellQuote.escape(contents, "'")
-
-        machine.communicate.tap do |comm|
-          comm.execute("mkdir -p ~/.ssh")
-          comm.execute("chmod 0700 ~/.ssh")
-          comm.execute("printf '#{contents}\\n' >> ~/.ssh/authorized_keys")
-          comm.execute("chmod 0600 ~/.ssh/authorized_keys")
-        end
-      end
-
-      # Copyright (c) 2014 Mitchell Hashimoto
-      def self.remove_public_key(machine, contents)
-        contents = contents.chomp
-        contents = Vagrant::Util::ShellQuote.escape(contents, "'")
-
-        machine.communicate.tap do |comm|
-          if comm.test("test -f ~/.ssh/authorized_keys")
-            comm.execute(
-              "gsed -i '/^.*#{contents}.*$/d' ~/.ssh/authorized_keys")
-          end
-        end
-      end
-    end
 
     class Plugin < Vagrant.plugin("2")
       name "Solaris10 guest"
       description "Solaris10 guest support."
 
       guest_capability("solaris", "mount_vmware_shared_folder") do
-        A 
+        require_relative "cap/mount_vmware_shared_folder"
+        Cap::MountVmwareSharedFolder 
       end
 
       guest_capability("solaris", "mount_parallels_shared_folder") do
-        A 
+        require_relative "cap/mount_parallels_shared_folder"
+        Cap::MountParallelsSharedFolder 
       end
 
       guest_capability("solaris", "insert_public_key") do
-        A 
+        require_relative "cap/insert_public_key"
+        Cap::InsertPublicKey
       end
 
       guest_capability("solaris", "remove_public_key") do
-        A 
+        require_relative "cap/remove_public_key"
+        Cap::RemovePublicKey
+      end
+
+      guest_capability("solaris", "rsync_post") do
+        require_relative "cap/rsync"
+        Cap::RSync
       end
     end
   end

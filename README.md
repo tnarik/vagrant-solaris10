@@ -6,6 +6,13 @@
 [![RubyGems](http://img.shields.io/gem/v/vagrant-solaris10.svg)](http://rubygems.org/gems/vagrant-solaris10)
 [![Gemnasium](http://img.shields.io/gemnasium/tnarik/vagrant-solaris10.svg)](https://gemnasium.com/tnarik/vagrant-solaris10)
 
+# Description
+
+This is a Vagrant plugin for Solaris 10.
+As opossed to the default implementation of the Vagrant Solaris 10 plugin part of Vagrant, this implementation tries to avoid non Solaris tools or approaches, as the main target is a 'as pure as possible' Solaris 10 machine. This means most of the tools installed in the system will be default Solaris one and not GNU replacements. GNU replacements, when installed, are available as separate commands, straight from the installation packages.
+
+The main machine this plugin is used with is [my Solaris10 Packer build](https://github.com/tnarik/basebox-solaris10).
+
 ## Installation
 
 Install via Vagrant
@@ -13,10 +20,6 @@ Install via Vagrant
 ```zsh
 $ vagrant plugin install vagrant-solaris10
 ```
-
-## Usage
-
-This is a Vagrant plugin.
 
 ## Contributing
 
