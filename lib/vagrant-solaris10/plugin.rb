@@ -21,6 +21,11 @@ module Vagrant
         Cap::MountNFSFolder
       end
 
+      guest_capability("solaris", "change_host_name") do
+        require_relative "cap/change_host_name"
+        Cap::ChangeHostName
+      end
+
       guest_capability("solaris", "insert_public_key") do
         require_relative "cap/insert_public_key"
         Cap::InsertPublicKey
