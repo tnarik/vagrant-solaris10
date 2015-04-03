@@ -1,5 +1,7 @@
-# Copyright (c) 2014 Tnarik Innael - repackaged
+# Copyright (c) 2014-2015 Tnarik Innael - repackaged
 # Copyright (c) 2014 Mitchell Hashimoto - from plugins/guest/linux/cap/insert_public_key.rb
+require "vagrant/util/shell_quote"
+
 module Vagrant
   module Solaris10
     module Cap
