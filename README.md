@@ -21,6 +21,12 @@ Install via Vagrant
 $ vagrant plugin install vagrant-solaris10
 ```
 
+To install from source code, first build via `rake` and then:
+
+```zsh
+$ vagrant plugin install pkg/vagrant-solaris10-x.x.x.gem
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/tnarik/vagrant-solaris10/fork )
