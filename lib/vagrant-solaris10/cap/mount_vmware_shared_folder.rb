@@ -1,4 +1,4 @@
-# Copyright (c) 2014 Tnarik Innael - adaptation to Solaris and repackaging
+# Copyright (c) 2014-2015 Tnarik Innael - adaptation to Solaris and repackaging
 # Copyright (c) 2013-2014 timsutton/kalmanh/lsimons - from plugins/guests/darwin/cap/mount_vmware_shared_folder.rb
 module Vagrant
   module Solaris10
@@ -40,8 +40,8 @@ module Vagrant
             # finally make the symlink
             comm.sudo("ln -s \"/hgfs/#{name}\" \"#{guestpath}\"")
 
-            # and set permissions correctly
-            comm.sudo("chown #{mount_uid}:#{mount_gid} #{guestpath}")
+            # Set permissions correctly on the link
+            comm.sudo("chown -h #{mount_uid}:#{mount_gid} \"#{guestpath}\"")
           end
         end
         

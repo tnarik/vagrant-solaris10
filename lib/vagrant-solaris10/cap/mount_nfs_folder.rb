@@ -21,9 +21,16 @@ module Vagrant
             expanded_guest_path = machine.guest.capability(
               :shell_expand_guest_path, opts[:guestpath])
   
-            # Create the folder
-            machine.communicate.sudo("mkdir -p #{expanded_guest_path}")
+            # clear prior symlink
+            if machine.communicate.test("test -L \"#{expanded_guest_path}\"", sudo: true)
+              machine.communicate.sudo("rm -f \"#{expanded_guest_path}\"")
+            end
   
+            # Create the folder if doesn't exist
+            if !machine.communicate.test("test -d \"#{expanded_guest_path}\"", sudo: true)
+              machine.communicate.sudo("mkdir -p #{expanded_guest_path}")
+            end
+
             # Figure out any options
             mount_opts = ["vers=#{opts[:nfs_version]}"]
             if opts[:mount_options]
