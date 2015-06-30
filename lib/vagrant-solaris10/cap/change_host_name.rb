@@ -9,7 +9,7 @@ module Vagrant
 
           # Only do this if the hostname is not already set
           machine.communicate.tap do |comm|
-            if !comm.test("hostname | grep '#{name}", sudo: true))
+            if !comm.test("hostname | grep '#{name}", sudo: true)
               ifconfig = nil
               # Get ifconfig output
               comm.execute("ifconfig -a") do |type, data|
